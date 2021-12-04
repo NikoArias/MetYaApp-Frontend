@@ -15,7 +15,15 @@ class DashboardPage extends Component{
   render(){
     return(
       <>
-      <h1> Dashboard :)</h1>
+            <div className="w3-row w3-black">
+              <div className="w3-col s4 w3-container w3-padding">
+              </div>
+              <div className="w3-col s4 w3-container w3-center">
+                 <h4>Dashboard</h4>
+              </div>
+              <div className="w3-col s4 w3-container w3-padding">
+              </div>
+            </div>
       </>
     )
   }
