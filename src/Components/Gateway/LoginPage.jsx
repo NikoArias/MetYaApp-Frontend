@@ -34,7 +34,7 @@ class LoginPage extends Component{
           <input className="w3-input" type="password" name="username"/>
         </p>
         <p>
-          <button className="w3-btn w3-green w3-block w3-margin-bottom">Login</button>
+          <Link to="/dashboard" className="w3-btn w3-green w3-block w3-margin-bottom">Login</Link>
           <Link to="/register" className="w3-btn w3-light-grey w3-block">Sign up</Link>
         </p>
        </div>

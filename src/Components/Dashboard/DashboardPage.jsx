@@ -19,12 +19,12 @@ class DashboardPage extends Component{
     return(
       <>
             <div className="w3-row">
-              <MapContainer center={[45.4, -75.7]} zoom={12}scrollWheelZoom={false}>
+              <MapContainer center={[42.9675, -81.2326]} zoom={12}scrollWheelZoom={true}>
                 <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 />
-                <Marker position={[45.4, -75.7]}>
+                <Marker position={[42.9695, -81.2326]}>
                   <Popup>
                   <div className="w3-container">
                    <div className="w3-light-grey w3-container">
@@ -35,17 +35,23 @@ class DashboardPage extends Component{
                    <h4><strong>Event 1</strong></h4>
                    <label>by jhon doe</label>
                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                   <Link to="/events" className="w3-blue w3-button w3-block">More Info</Link>
+                   <Link to="/event/1" className="w3-blue w3-button w3-block">More Info</Link>
                   </div>
                   </Popup>
                 </Marker>
-                <Marker position={[53.4, -70.7]}>
+                <Marker position={[42.9667, -81.2535]}>
                 <Popup>
                 <div className="w3-container">
                 <img src=""></img>
                  <div className="w3-light-grey w3-container w3-round-xlarge">
                  <br />
                  </div>
+                 <br />
+                 <hr className="w3-grey"/>
+                 <h4><strong>Event 2</strong></h4>
+                 <label>by jhon doe</label>
+                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                 <Link to="/event/2" className="w3-blue w3-button w3-block">More Info</Link>
                 </div>
                 </Popup>
                 </Marker>

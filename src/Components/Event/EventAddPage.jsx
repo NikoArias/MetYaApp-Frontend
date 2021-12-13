@@ -136,7 +136,6 @@ class EventAddPage extends Component{
       <>
       <div className="w3-row">
         <div className="w3-col s4 w3-container w3-padding">
-        <button className="w3-btn w3-round w3-white w3-border-black w3-border">Back</button>
         </div>
         <div className="w3-col s4 w3-container w3-center">
             <h4><strong>My Event </strong></h4>

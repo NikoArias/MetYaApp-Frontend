@@ -20,7 +20,7 @@ export default function NavTab(props) {
          {!isLocked && <div>
            {isMoreClicked && <div className="w3-sidebar w3-bar-block w3-border-right" id="mySidebar" style={{top: "75%", width:"50%", right:"0"}}>
                <button onClick={() => setIsMoreClicked(!isMoreClicked)} className="w3-bar-item w3-large">Close &times;</button>
-               <a href="#" className="w3-bar-item w3-button">Settings</a>
+               {/*<a href="/settings" className="w3-bar-item w3-button">Settings</a>*/}
                <a href="/" className="w3-bar-item w3-button">Logout</a>
            </div>}
 
