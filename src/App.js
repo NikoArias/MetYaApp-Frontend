@@ -14,6 +14,7 @@ import EventListPage from "./Components/Event/EventListPage";
 import EventAddPage from "./Components/Event/EventAddPage";
 import SettingsPage from "./Components/Setting/SettingsPage";
 import TabNav from "./Components/Misc/TabNav";
+import MiscPage from "./Components/Misc/miscPage";
 
 
 class App extends Component{
@@ -30,6 +31,7 @@ class App extends Component{
       <>
       <Router>
         <Routes>
+            <Route exact path="/misc" element={<MiscPage/>} />
             <Route exact path="/settings" element={<SettingsPage/>} />
             <Route exact path="/event/:id" element={<EventDetailsPage/>} />
             <Route exact path="/events/create" element={<EventAddPage/>} />

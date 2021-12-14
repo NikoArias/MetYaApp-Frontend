@@ -50,29 +50,6 @@ export default function ProfileComponent(props){
        </div>
     </div>
 
-      <br />
-      <hr className="w3-grey"/>
-
-      <div className="w3-container">
-         <div className="w3-white w3-container w3-round-xlarge">
-            <br />  <label><strong>User Preferences </strong></label>
-             <div className="w3-display-container">
-               <br />
-                 <ul class="w3-ul w3-center w3-card-4" style={{width:"100%"}}>
-                    <li>example</li>
-                    <li>example</li>
-                    <li>example</li>
-                    <li>example</li>
-                    <li>example</li>
-                    <li>example</li>
-                  </ul>
-             </div>
-           <br />
-         </div>
-         <br />
-       <br />
-      </div>
-    <br /><br />
     </>
   )
 }

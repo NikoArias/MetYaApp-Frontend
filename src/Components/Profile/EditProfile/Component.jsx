@@ -1,4 +1,8 @@
+import ImageUploader from 'react-images-upload';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 export default function EditProfileComponent(props){
+  const { pictures, onDrop } = props;
   return(
     <>
       <div className="w3-row">
@@ -57,7 +61,26 @@ export default function EditProfileComponent(props){
            </div>
           </div>
 
-            <hr className="w3-black"/><br /><br />
+            <hr className="w3-black"/>
+
+          <div className="w3-container">
+            <ImageUploader
+                  withIcon={true}
+                  buttonText='Choose images'
+                  onChange={onDrop}
+                  imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                  maxFileSize={5242880}
+                  withPreview={true}
+              />
+          </div>
+
+                  <hr className="w3-black"/>
+
+          <div className="w3-container">
+              <Link to="/dashboard" className="w3-btn w3-round-large w3-black w3-block w3-margin-bottom">Update Profile</Link>
+              <Link to="/profile" className="w3-btn w3-round-large w3-red w3-block">Cancel</Link>
+          </div>
+            <br /><br /><br /><br />
     </>
   )
 }

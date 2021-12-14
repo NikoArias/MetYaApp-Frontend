@@ -9,16 +9,24 @@ class EditProfilePage extends Component{
     super(props);
 
     this.state = {
-
+      pictures:[],
     }
+    this.onDrop = this.onDrop.bind(this);
   }
 
+  onDrop(picture) {
+        this.setState({
+            pictures: this.state.pictures.concat(picture),
+        });
+    }
+
   render(){
+    const { pictures } = this.state
     return(
       <>
-      <EditProfileComponent />
+      <EditProfileComponent pictures={pictures} onDrop={ this.onDrop} />
       </>
-    )
+     );
   }
 }
 
