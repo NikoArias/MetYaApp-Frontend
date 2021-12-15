@@ -4,7 +4,8 @@ import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale'
 import { DatePickerCalendar } from 'react-nice-dates'
 import 'react-nice-dates/build/style.css'
-import TimePicker from 'react-time-picker';
+import TimePicker from 'react-time-picker'
+import { getEventCall, postEventCall} from "../../API/events"
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -50,16 +51,55 @@ class EventAddPage extends Component{
 
     this.onMultiSelectClick = this.onMultiSelectClick.bind(this);
     this.onSubmitClick = this.onSubmitClick.bind(this);
+    this.onTextChange = this.onTextChange.bind(this);
+
     this.onShowOpenCalendarPickModal = this.onShowOpenCalendarPickModal.bind(this);
     this.onHideOpenCalendarPickModal = this.onHideOpenCalendarPickModal.bind(this);
     this.onCalendarPickDateChange = this.onCalendarPickDateChange.bind(this);
-    this.onSubmitClick = this.onSubmitClick.bind(this);
     this.onStartTimeChange = this.onStartTimeChange.bind(this);
     this.onEndTimeChange = this.onEndTimeChange.bind(this);
     this.onTimeSelectClick = this.onTimeSelectClick.bind(this);
+
     this.onConfirmButtonClick = this.onConfirmButtonClick.bind(this);
 
+    this.onGetEventSucces = this.onGetEventSucces.bind(this);
+    this.onGetEventError = this.onGetEventError.bind(this);
+    this.onGetEventDone = this.onGetEventDone.bind(this);
+
+    this.onPostEventSucces = this.onPostEventSucces.bind(this);
+    this.onPostEventError = this.onPostEventError.bind(this);
+    this.onPostEventDone = this.onPostEventDone.bind(this);
+
+
+
   }
+
+  onPostEventSucces(response){
+    console.log("TODO")
+  }
+
+  onPostEventError(err){
+    console.log("TODO")
+  }
+
+  onPostEventDone(){
+    console.log("TODO")
+  }
+
+
+
+  onGetEventSucces(response){
+    console.log("TODO")
+  }
+
+  onGetEventError(err){
+    console.log("TODO")
+  }
+
+  onGetEventDone(){
+    console.log("TODO")
+  }
+
 
   onConfirmButtonClick(e){
     const { date, time } = this.state
@@ -114,7 +154,25 @@ class EventAddPage extends Component{
             values.push(filterOption.value);
         }
         console.log(values);
+        const event_dt = this.state.dateTime.toUTCString()
+        const data = {
+          "event_name": this.state.event_name,
+          "event_address": this.state.event_address,
+          "event_pc": this.state.event_pc,
+          "event_dt": this.state.dateTime.toUTCString(),
+          "event_details": this.state.event_details,
+        }
+        postEventCall(data, this.onPostEventSucces, this.onPostEventError, this.onPostEventDone)
+        // TODO: add code for sending data to server
   }
+
+  onTextChange(e) {
+         const value = e.target.value;
+         const key = e.target.name;
+         this.setState({
+             [key]: value,
+         });
+     }
 
   onStartTimeChange(e){
     console.log(e)
@@ -131,7 +189,7 @@ class EventAddPage extends Component{
   }
 
   render(){
-    const { startTime, endTime, filterOptions, showCalendarPickModal, date, timeOptions, dateTime} = this.state
+    const { event_name, event_details, event_address, event_pc, startTime, endTime, filterOptions, showCalendarPickModal, date, timeOptions, dateTime} = this.state
     return(
       <>
       <div className="w3-row">
@@ -151,22 +209,22 @@ class EventAddPage extends Component{
          <label><strong>Add event </strong> <i class="fa fa-plus" aria-hidden="true"></i></label>
           <p>
             <label> Event Name</label>
-            <input className="w3-input" type="text" name="username"/>
+            <input className="w3-input" type="text" name="event_name" value={event_name} onChange={this.onTextChange}/>
           </p>
           <p>
             <label>Adress</label>
-            <input className="w3-input" type="text" name="username"/>
+            <input className="w3-input" type="text" name="event_address" value={event_address} onChange={this.onTextChange}/>
           </p>
           <p>
             <label> Postal Code</label>
-            <input className="w3-input" type="text" name="username"/>
+            <input className="w3-input" type="text" name="event_pc" value={event_pc} onChange={this.onTextChange}/>
           </p>
          </div>
         </div>
         <br />
         <form className="w3-container">
           <label>Filters  <i class="fa fa-filter" aria-hidden="true"></i></label>
-          <Select options={filterOptions} onChange={this.onMultiSelectClick} isMulti={true} />
+          <Select options={filterOptions} name=""onChange={this.onMultiSelectClick} isMulti={true} />
         </form>
         <br />
         <form className="w3-container">
@@ -208,12 +266,12 @@ class EventAddPage extends Component{
               <label><strong>Event Description </strong> <i class="fa fa-fire" aria-hidden="true"></i></label>
                <p>
                  <label> Host Rules (*)</label>
-                 <textarea className="w3-input" type="text" name="username" rows={10}></textarea>
+                 <textarea className="w3-input" type="text" name="event_details" rows={10} value={event_details} onChange={this.onTextChange}></textarea>
                </p>
               </div>
               <br /><br />
               <p>
-                <button className="w3-btn w3-black w3-block w3-margin-bottom">Update Event</button>
+                <button onClick={this.onSubmitClick} type="button" className="w3-btn w3-black w3-block w3-margin-bottom">Update Event</button>
                 <Link to="/dashboard" className="w3-btn w3-red w3-block">Cancel Event</Link>
               </p>
              </div>
