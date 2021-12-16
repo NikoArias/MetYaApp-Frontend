@@ -2,15 +2,42 @@ import { React, Component } from "react";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+import { getEventListCall } from "../../API/events"
+
 
 class EventListPage extends Component{
   constructor(props){
     super(props);
 
     this.state = {
-
+      events: [],
     }
+    this.onGetEventSucces = this.onGetEventSucces.bind(this);
+    this.onGetEventError = this.onGetEventError.bind(this);
+    this.onGetEventDone = this.onGetEventDone.bind(this);
   }
+
+  componentDidMount(){
+    getEventListCall(this.onGetEventSucces, this.onGetEventError, this.onGetEventDone)
+  }
+
+  onGetEventSucces(response){
+    console.log(response)
+    const { results }  = response.data
+
+    this.setState({
+      events:results,
+    })
+  }
+
+  onGetEventError(err){
+
+  }
+
+  onGetEventDone(){
+
+  }
+
 
   render(){
     return(
@@ -42,7 +69,7 @@ class EventListPage extends Component{
             </div>
           </div>
 
-          <br />
+        {/*  <br />
             <hr className="w3-grey"/>
           <br />
 
@@ -86,7 +113,7 @@ class EventListPage extends Component{
 
       <br />
         <hr className="w3-grey"/>
-      <br />
+      <br /> */}
       </>
     )
   }

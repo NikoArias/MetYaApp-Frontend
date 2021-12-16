@@ -7,7 +7,8 @@ import 'react-nice-dates/build/style.css'
 import TimePicker from 'react-time-picker'
 import { getEventCall, postEventCall} from "../../API/events"
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import { BrowserRouter as Router, Switch, Route, Navigate, Link } from "react-router-dom";
 
 
 // https://www.w3resource.com/javascript-exercises/javascript-date-exercise-6.php
@@ -20,6 +21,8 @@ class EventAddPage extends Component{
     super(props);
 
     this.state = {
+      host_name:"",
+      forceURL:"",
       showCalendarPickModal: false,
       startTime: null,
       endTime: null,
@@ -75,29 +78,26 @@ class EventAddPage extends Component{
   }
 
   onPostEventSucces(response){
-    console.log("TODO")
+    this.setState({
+      forceURL:"/dashboard"
+    })
   }
 
   onPostEventError(err){
-    console.log("TODO")
   }
 
   onPostEventDone(){
-    console.log("TODO")
   }
 
 
 
   onGetEventSucces(response){
-    console.log("TODO")
   }
 
   onGetEventError(err){
-    console.log("TODO")
   }
 
   onGetEventDone(){
-    console.log("TODO")
   }
 
 
@@ -157,10 +157,14 @@ class EventAddPage extends Component{
         const event_dt = this.state.dateTime.toUTCString()
         const data = {
           "event_name": this.state.event_name,
+          "event_host": this.state.event_host,
+          "event_img": this.state.event_img,
           "event_address": this.state.event_address,
           "event_pc": this.state.event_pc,
           "event_dt": this.state.dateTime.toUTCString(),
           "event_details": this.state.event_details,
+          "event_lat": this.state.event_lat,
+          "event_long": this.state.event_long,
         }
         postEventCall(data, this.onPostEventSucces, this.onPostEventError, this.onPostEventDone)
         // TODO: add code for sending data to server
@@ -189,7 +193,10 @@ class EventAddPage extends Component{
   }
 
   render(){
-    const { event_name, event_details, event_address, event_pc, startTime, endTime, filterOptions, showCalendarPickModal, date, timeOptions, dateTime} = this.state
+    const {event_img, event_host, forceURL, event_long, event_lat, event_name, event_details, event_address, event_pc, startTime, endTime, filterOptions, showCalendarPickModal, date, timeOptions, dateTime} = this.state
+    if (forceURL != ""){
+      return <Navigate to={forceURL}/>
+    }
     return(
       <>
       <div className="w3-row">
@@ -212,12 +219,24 @@ class EventAddPage extends Component{
             <input className="w3-input" type="text" name="event_name" value={event_name} onChange={this.onTextChange}/>
           </p>
           <p>
+            <label> Event Host</label>
+            <input className="w3-input" type="text" name="event_host" value={event_host} onChange={this.onTextChange}/>
+          </p>
+          <p>
             <label>Adress</label>
             <input className="w3-input" type="text" name="event_address" value={event_address} onChange={this.onTextChange}/>
           </p>
           <p>
             <label> Postal Code</label>
             <input className="w3-input" type="text" name="event_pc" value={event_pc} onChange={this.onTextChange}/>
+          </p>
+          <p>
+            <label> Latitude</label>
+            <input className="w3-input" type="text" name="event_lat" value={event_lat} onChange={this.onTextChange}/>
+          </p>
+          <p>
+            <label> Longitude</label>
+            <input className="w3-input" type="text" name="event_long" value={event_long} onChange={this.onTextChange}/>
           </p>
          </div>
         </div>
@@ -267,6 +286,10 @@ class EventAddPage extends Component{
                <p>
                  <label> Host Rules (*)</label>
                  <textarea className="w3-input" type="text" name="event_details" rows={10} value={event_details} onChange={this.onTextChange}></textarea>
+               </p>
+               <p>
+                 <label> Flayer (img link)</label>
+                 <input className="w3-input" type="text" name="event_img" value={event_img} onChange={this.onTextChange}/>
                </p>
               </div>
               <br /><br />

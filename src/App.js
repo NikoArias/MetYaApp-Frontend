@@ -2,10 +2,10 @@ import "./App.css";
 import { React, Component } from "react";
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import LoginPage from "./Components/Gateway/LoginPage";
+import LoginContainer from "./Components/Gateway/Login/Container";
 import IndexPage from "./Components/Gateway/IndexPage";
 import PageNotFound from "./Components/Misc/404";
-import RegisterPage from "./Components/Gateway/RegisterPage";
+import RegisterContainer from "./Components/Gateway/Register/Container";
 import ProfilePage from "./Components/Profile/Container";
 import EditProfilePage from "./Components/Profile/EditProfile/Container";
 import DashboardPage from "./Components/Dashboard/DashboardPage";
@@ -39,8 +39,8 @@ class App extends Component{
             <Route exact path="/dashboard" element={<DashboardPage/>} />
             <Route exact path="/profile" element={<ProfilePage/>} />
             <Route exact path="/profile-edit" element={<EditProfilePage/>} />
-            <Route exact path="/register" element={<RegisterPage/>} />
-            <Route exact path="/login" element={<LoginPage/>} />
+            <Route exact path="/register" element={<RegisterContainer/>} />
+            <Route exact path="/login" element={<LoginContainer/>} />
             <Route exact path="/" element={<IndexPage/>} />
             <Route exact path="*" element={<PageNotFound/>} />
          </Routes>

@@ -12,8 +12,6 @@ export default function NavTab(props) {
 
     // Declare a new state variable, which we'll call "count"
     const [isMoreClicked, setIsMoreClicked] = useState(false);
-    console.log(isMoreClicked);
-    console.log(basePath)
     const isLocked = basePath.includes("login") || basePath.includes("register") || basePath === ""
     return (
         <>

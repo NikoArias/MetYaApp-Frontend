@@ -1,7 +1,7 @@
 import axios from "axios";
 import { LIST_CREATE_EVENT } from "../constants"
 
-export function getEventCall(onGetEventSucces, onGetEventError, onGetEventDone){
+export function getEventListCall(onGetEventSucces, onGetEventError, onGetEventDone){
   axios.get(LIST_CREATE_EVENT)
   .then(onGetEventSucces)
   .catch(onGetEventError)
