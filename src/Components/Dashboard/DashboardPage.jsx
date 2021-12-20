@@ -67,7 +67,7 @@ class DashboardPage extends Component{
                          <h4><strong>{event.event_name}</strong></h4>
                          <label>by {event.event_host}</label>
                          <p>{event.event_details}</p>
-                         <Link to="/event/1" className="w3-blue w3-button w3-block">More Info</Link>
+                         <Link to="/events" className="w3-blue w3-button w3-block">More Info</Link>
                         </div>
                         </Popup>
                       </Marker>
