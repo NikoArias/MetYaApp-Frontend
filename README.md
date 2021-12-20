@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+
+
+
+This version of metYa is an alpha version, it is an a posteriori project therefore it is under development.
+flowchart = https://lucid.app/lucidchart/f1077220-0c21-45ee-b998-feeee6b00fe5/edit?invitationId=inv_4263b724-eea3-4ca8-a1e9-825fd81822af# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
